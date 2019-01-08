@@ -168,6 +168,17 @@ class ArgsSpec : Spek({
         }
     }
 
+    context("parse args with passed --install-retries") {
+
+        val args by memoized {
+            parseArgs(rawArgsWithOnlyRequiredFields + arrayOf("--install-retries", "600"))
+        }
+
+        it("parses --install-retries correctly") {
+            assertThat(args.installRetries).isEqualTo(600)
+        }
+    }
+
     context("parse args with passed --fail-if-no-tests") {
 
         val args by memoized {
